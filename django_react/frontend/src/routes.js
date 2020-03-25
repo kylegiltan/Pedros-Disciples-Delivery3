@@ -18,17 +18,14 @@ import {
 
 
 export default class BusWaysRoutes extends React.Component{
-    state = {
+    // _isMounted = false 
+    // async componentDidMount(){
+    //     this._isMounted=true
+    // }
 
-    }
-    _isMounted = false 
-    async componentDidMount(){
-        this._isMounted=true
-    }
-
-    componentWillUnmount(){
-        this._isMounted=false
-    }
+    // componentWillUnmount(){
+    //     this._isMounted=false
+    // }
     render(){
         return(
             <BrowserRouter>

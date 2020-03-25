@@ -14,7 +14,7 @@ import Nav from '../Components/NavBar'
 class StudentHome extends Component{
 
     state={
-        logout:false
+        logout:true
     }
 
     onLogout=()=>{

@@ -1,57 +1,51 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { Component } from 'react';
+
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+// import { red, lightBlue } from '@material-ui/core/colors'
+
+import Routes from './routes'
+import './CSS/general.css'
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#6C63FF'
+    },
+    secondary: {
+      main: '#F9BC48'
+    },
+    third: {
+      main: '#5AC3FF'
+    },
+  },
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      '"IBM Plex Sans"',
+      'Roboto',
+      'sans-serif'
+    ].join(',')
+  }
+})
+
+
+
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      loaded: false,
-      placeholder: "Loading"
-    };
-  }
 
-  componentDidMount() {
-    fetch("api/login")
-      .then(response => {
-        console.log(response)
-        if (response.status > 400) {
-          return this.setState(() => {
-            return { placeholder: "Something went wrong!" };
-          });
-        }
-        return response.json();
-      })
-      .then(data => {
-        this.setState(() => {
-          return {
-            data,
-            loaded: true
-          };
-        });
-      })
-      .catch()
-      {
-        console.log("Failed to produce readable json");
-      };
-  }
 
+    
   render() {
     return (
-      <ul>
-        {this.state.data.map(person => {
-          return (
-            <li key={person.id}>
-              {person.username} - {person.password}
-            </li>
-          );
-        })}
-      </ul>
+      <div style={{ height: '100%' }}>
+        <MuiThemeProvider theme={theme}>
+          <Routes />
+        </MuiThemeProvider>
+
+      </div>
     );
   }
 }
 
-export default App;
 
-const container = document.getElementById("root");
-render(<App />, container);
+export default App;
